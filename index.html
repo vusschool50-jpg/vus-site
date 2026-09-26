@@ -24,6 +24,7 @@
   text-align:center;
   box-shadow:0 20px 50px rgba(0,0,0,.1);
   transition:.35s;
+  width:100%;
 }
 
 .president:hover{
@@ -34,7 +35,7 @@
   width:100%;
   height:240px;
   object-fit:cover;
-  object-position: top; /* 👈 ДОДАЙ ЦЕ */
+  object-position: top;
 }
 
 .name{
@@ -278,8 +279,6 @@ h2{font-size:clamp(2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.045em}
   justify-content:space-between;
   font-family:Unbounded;
   font-size:.78rem;
-
-  /* ОСЬ ТУТ МАГІЯ */
   transition: 
     background .3s ease,
     color .3s ease,
@@ -364,38 +363,6 @@ h2{font-size:clamp(2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.045em}
 .toast{position:fixed;z-index:1200;right:22px;bottom:22px;background:var(--burgundy);color:var(--cream);padding:15px 18px;border-radius:16px;box-shadow:var(--shadow);transform:translateY(130px);transition:.35s;font-size:.82rem}
 .toast.show{transform:none}
 
-@media(max-width:900px){
- .navlinks{display:none}.menu{display:block}
- .nav.mobile .navlinks{display:flex;position:absolute;left:0;right:0;top:65px;flex-direction:column;background:var(--burgundy);padding:12px;border-radius:18px}
- .nav.mobile .navlinks a{width:100%;text-align:center}
- .hero-grid,.mission-grid,.idea-grid,.news-grid{grid-template-columns:1fr}
- .hero-panel{transform:none}
- .projects{grid-template-columns:1fr 1fr}
- .people{grid-template-columns:1fr 1fr}
- .stats-grid{grid-template-columns:1fr 1fr}
- .footer-grid{grid-template-columns:1fr 1fr}
- #history .wrap{grid-template-columns:1fr;gap:35px}
- #history .presidents{grid-template-columns:repeat(3,1fr)}
- #curator .people{grid-template-columns:1fr;gap:24px;text-align:center}
- #curator .person-img{height:320px}
-}
-@media(max-width:620px){
- .wrap{width:min(100% - 26px,1180px)}
- .section{padding:78px 0}
- .hero{padding-top:125px}
- .projects,.people,.social-grid,.pillars{grid-template-columns:1fr}
- .stats-grid{grid-template-columns:1fr 1fr}
- .section-head{display:block}
- .section-head p{margin-top:20px}
- .footer-grid{grid-template-columns:1fr}
- .hero h1{font-size:clamp(3rem,17vw,5rem)}
- #history .presidents{grid-template-columns:repeat(2,1fr)}
- .president img{height:160px}
- .hero-panel{padding:22px}
- .big-logo{width:100px}
- .form-card{padding:20px}
- .curator-info{max-width:100%}
-}
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
  *,*:before,*:after{animation:none!important;transition:none!important}
@@ -495,34 +462,16 @@ body::before{
 #history .section-head{
   grid-column:1 / -1;
 }
-
 #history .timeline{
   grid-column:1;
 }
-
 #history .presidents{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
   gap:20px;
-}	
-.president{
-  width:100%;
 }
 
-#history .section-head{
-  grid-column:1 / -1;
-}
-
-
-
-
-
-
-.president{
-  min-width:200px;
-  flex-shrink:0;
-}
- body {
+body {
     user-select: none;
     -webkit-user-select: none;
   }
@@ -582,6 +531,49 @@ body::before{
 .curator-info p{
   color:var(--coffee);
   line-height:1.6;
+}
+
+/* ==========================================================
+   МОБІЛЬНА АДАПТАЦІЯ — цей блок навмисно останній у файлі,
+   щоб перебивати фіксовані ширини колонок (260px/320px) вище.
+   ========================================================== */
+@media(max-width:900px){
+ .navlinks{display:none}.menu{display:block}
+ .nav.mobile .navlinks{display:flex;position:absolute;left:0;right:0;top:65px;flex-direction:column;background:var(--burgundy);padding:12px;border-radius:18px}
+ .nav.mobile .navlinks a{width:100%;text-align:center}
+ .hero-grid,.mission-grid,.idea-grid,.news-grid{grid-template-columns:1fr}
+ .hero-panel{transform:none}
+ .projects{grid-template-columns:1fr 1fr}
+ .people{grid-template-columns:1fr 1fr}
+ .stats-grid{grid-template-columns:1fr 1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
+
+ #history .wrap{grid-template-columns:1fr!important;gap:35px}
+ #history .timeline{grid-column:auto}
+ #history .presidents{grid-template-columns:repeat(3,1fr)!important}
+
+ #curator .people{grid-template-columns:1fr!important;gap:24px;text-align:center}
+ #curator .person-img{height:320px}
+ .curator-info{max-width:100%}
+}
+@media(max-width:620px){
+ .wrap{width:min(100% - 26px,1180px)}
+ .section{padding:78px 0}
+ .hero{padding-top:125px}
+ .projects,.people,.social-grid,.pillars{grid-template-columns:1fr}
+ .stats-grid{grid-template-columns:1fr 1fr}
+ .section-head{display:block}
+ .section-head p{margin-top:20px}
+ .footer-grid{grid-template-columns:1fr}
+ .hero h1{font-size:clamp(3rem,17vw,5rem)}
+
+ #history .presidents{grid-template-columns:repeat(2,1fr)!important}
+ .president img{height:160px}
+ .hero-panel{padding:22px}
+ .big-logo{width:100px}
+ .form-card{padding:20px}
+ .curator-info{max-width:100%}
+ #curator .person-img{height:260px}
 }
 </style>
 </head>
@@ -733,7 +725,6 @@ body::before{
    <p>Лідери, які змінювали шкільне життя.</p>
   </div>
 
-  <!-- ✅ Timeline -->
   <div class="timeline">
 
     <div class="event reveal">
@@ -763,7 +754,6 @@ body::before{
 
   </div>
 
-  <!-- ✅ ФОТКИ ВЖЕ ПІСЛЯ timeline -->
   <div class="presidents">
 
     <div class="president">
@@ -922,18 +912,15 @@ modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 
-// Динамічне світло за курсором.
 addEventListener('pointermove', e=>{
   document.body.style.setProperty('--mx', e.clientX+'px');
   document.body.style.setProperty('--my', e.clientY+'px');
 },{passive:true});
 
-// Каскадна поява блоків.
 document.querySelectorAll('.reveal').forEach((el,i)=>{
   el.style.transitionDelay = Math.min((i % 5) * 70, 280) + 'ms';
 });
 
-// Завантаження ідей при відкритті сторінки
 window.addEventListener('DOMContentLoaded', () => {
   let ideas = JSON.parse(localStorage.getItem('ideas')) || [];
 
@@ -962,13 +949,11 @@ document.getElementById('ideaForm').addEventListener('submit', function(e){
   idea: inputs[3].value
 };
 
-  // 🔴 ОСЬ ТУТ ПЕРЕВІРКА
   if(data.idea.length < 10){
     alert("Опиши ідею детальніше");
     return;
   }
 
-  // далі відправка
   emailjs.send("service_y4scn4j","template_ig76b1t",data)
     .then(()=>{
       document.getElementById('toast').classList.add('show');
