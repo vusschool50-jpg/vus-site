@@ -374,6 +374,10 @@ h2{font-size:clamp(2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.045em}
  .people{grid-template-columns:1fr 1fr}
  .stats-grid{grid-template-columns:1fr 1fr}
  .footer-grid{grid-template-columns:1fr 1fr}
+ #history .wrap{grid-template-columns:1fr;gap:35px}
+ #history .presidents{grid-template-columns:repeat(3,1fr)}
+ #curator .people{grid-template-columns:1fr;gap:24px;text-align:center}
+ #curator .person-img{height:320px}
 }
 @media(max-width:620px){
  .wrap{width:min(100% - 26px,1180px)}
@@ -385,6 +389,12 @@ h2{font-size:clamp(2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.045em}
  .section-head p{margin-top:20px}
  .footer-grid{grid-template-columns:1fr}
  .hero h1{font-size:clamp(3rem,17vw,5rem)}
+ #history .presidents{grid-template-columns:repeat(2,1fr)}
+ .president img{height:160px}
+ .hero-panel{padding:22px}
+ .big-logo{width:100px}
+ .form-card{padding:20px}
+ .curator-info{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
